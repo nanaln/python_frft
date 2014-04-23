@@ -1,9 +1,5 @@
 nose
 numpy
 scipy
-matplotlib
-PyAudio
-ipdb
-dspy
 sphinx
 sphinx_rtd_theme
