@@ -8,4 +8,4 @@ Installation
 
 You can install this library using `pip`:
 
-    pip install git+ssh://git@work.audiolabs.uni-erlangen.de/nils/frft.git#egg=frft
+    pip install git+ssh://git@github.com/audiolabs/python_frft.git#egg=frft
