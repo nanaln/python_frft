@@ -29,8 +29,6 @@ setuptools.setup(
         'nose>=1.3.0',
         'numpy>=1.8',
         'scipy>=0.13.0',
-        'sphinx',
-        'sphinx_rtd_theme'
     ],
 
     tests_require=[
