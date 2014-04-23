@@ -1,42 +1,5 @@
-import sys
-import numpy
-import os
-import sphinx
-import sphinx.apidoc
-import urllib
-import warnings
 import setuptools
 import setuptools.command.develop
-
-
-class SphinxCommandProxy(setuptools.Command):
-    user_options = []
-    description = 'sphinx'
-
-    def initialize_options(self):
-        pass
-
-    def finalize_options(self):
-        pass
-
-    def run(self):
-        # metadata contains information supplied in setup()
-        metadata = self.distribution.metadata
-        src_dir = (self.distribution.package_dir or {'': ''})['']
-        src_dir = os.path.join(os.getcwd(),  src_dir)
-
-        # Build docs from docstrings in *.py files
-        sphinx.apidoc.main(
-            ['',
-             '-o', os.path.join('docs', 'source','api'), src_dir])
-
-        # Build the doc sources
-        sphinx.main(['', '-c', 'docs',
-                     '-D', 'project=' + metadata.name,
-                     '-D', 'version=' + metadata.version,
-                     '-D', 'release=' + metadata.version,
-                     os.path.join('docs', 'source'),
-                     os.path.join('docs', 'build')])
 
 
 setuptools.setup(
@@ -85,10 +48,5 @@ setuptools.setup(
         'Topic :: Multimedia :: Sound/Audio :: Analysis',
         'Topic :: Multimedia :: Sound/Audio :: Sound Synthesis'
     ],
-
-    # Register custom commands
-    cmdclass={
-        'build_sphinx': SphinxCommandProxy
-    },
     zip_safe=False,
 )
