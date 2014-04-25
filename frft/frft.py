@@ -90,6 +90,26 @@ def frft(f, a):
     return ret
 
 
+def ifrft(f, a):
+    """
+    Calculate the inverse fast fractional fourier transform.
+
+    Parameters
+    ----------
+    f : numpy array
+        The signal to be transformed.
+    a : float
+        fractional power
+
+    Returns
+    -------
+    data : numpy array
+        The transformed signal.
+
+    """
+    return frft(f, a + 2)
+
+
 def sincinterp(x):
     N = len(x)
     y = numpy.zeros(2 * N - 1)
