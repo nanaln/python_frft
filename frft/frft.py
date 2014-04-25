@@ -48,7 +48,7 @@ def frft(f, a):
         ret[shft] = numpy.fft.fft(f[shft]) / sN
         return ret
     if a == 3:
-        ret[shft, 1] = numpy.fft.ifft(f[shft]) * sN
+        ret[shft] = numpy.fft.ifft(f[shft]) * sN
         return ret
 
     # reduce to interval 0.5 < a < 1.5
