@@ -32,8 +32,8 @@ def frft(f, a):
         https://nalag.cs.kuleuven.be/research/software/FRFT/
 
     """
-    ret = numpy.zeros_like(f)
-    f = f.copy()
+    ret = numpy.zeros_like(f, dtype=numpy.complex)
+    f = f.copy().astype(numpy.complex)
     N = len(f)
     shft = ((numpy.arange(N) + numpy.floor(N / 2)) % N).astype(int)
     sN = numpy.sqrt(N)
@@ -112,7 +112,7 @@ def ifrft(f, a):
 
 def sincinterp(x):
     N = len(x)
-    y = numpy.zeros(2 * N - 1)
+    y = numpy.zeros(2 * N - 1, dtype=x.dtype)
     y[:2 * N:2] = x
     xint = scipy.signal.fftconvolve(
         y[:2 * N],
