@@ -1,16 +1,19 @@
 language: python
 python:
     - 2.7
-    - 3.4
+    - 3.2
 virtualenv:
     system_site_packages: true
 before_install:
     - sudo apt-get update -qq
     - sudo apt-get install -qq python-numpy python-scipy python-nose python-matplotlib
     - sudo apt-get install -qq libatlas-dev libatlas-base-dev liblapack-dev gfortran
+    - pip install --upgrade pip
+    - pip install --upgrade setuptools
+    - pip install wheel
     - pip install python-dateutil
     - pip install pytz
 install:
-    - pip install -e .
+    - pip install --use-wheel  --use-mirrors -e .
 script: 
     - nosetests
