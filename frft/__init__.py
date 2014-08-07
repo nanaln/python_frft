@@ -1,1 +1,1 @@
-from frft import frft, ifrft
+from .frft import frft, ifrft
