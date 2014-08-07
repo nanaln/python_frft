@@ -1,12 +1,13 @@
 language: python
 python:
     - 2.7
-    - 3.2
+#    - 3.2 # Broken, see https://github.com/travis-ci/travis-ci/issues/2277
 virtualenv:
     system_site_packages: true
 before_install:
     - sudo apt-get update -qq
     - sudo apt-get install -qq python-numpy python-scipy python-nose python-matplotlib
+    - sudo apt-get install -qq python3-numpy python3-scipy python3-nose
     - sudo apt-get install -qq libatlas-dev libatlas-base-dev liblapack-dev gfortran
     - pip install python-dateutil
     - pip install pytz
