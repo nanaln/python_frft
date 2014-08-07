@@ -17,5 +17,5 @@ def precision(a):
 
 
 def test_precision():
-    for a in xrange(40):
+    for a in range(40):
         yield precision, a / 10.0
