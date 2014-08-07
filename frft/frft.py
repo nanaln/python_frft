@@ -35,25 +35,25 @@ def frft(f, a):
     ret = numpy.zeros_like(f, dtype=numpy.complex)
     f = f.copy().astype(numpy.complex)
     N = len(f)
-    shft = ((numpy.arange(N) + numpy.floor(N / 2)) % N).astype(int)
+    shft = numpy.fmod(numpy.arange(N) + numpy.fix(N / 2), N).astype(int)
     sN = numpy.sqrt(N)
-    a = a % 4
+    a = numpy.remainder(a, 4.0)
 
     # Special cases
-    if a == 0:
+    if a == 0.0:
         return f
-    if a == 2:
+    if a == 2.0:
         return numpy.flipud(f)
-    if a == 1:
+    if a == 1.0:
         ret[shft] = numpy.fft.fft(f[shft]) / sN
         return ret
-    if a == 3:
+    if a == 3.0:
         ret[shft] = numpy.fft.ifft(f[shft]) * sN
         return ret
 
     # reduce to interval 0.5 < a < 1.5
     if a > 2.0:
-        a = a - 2
+        a = a - 2.0
         f = numpy.flipud(f)
     if a > 1.5:
         a = a - 1
@@ -107,7 +107,7 @@ def ifrft(f, a):
         The transformed signal.
 
     """
-    return frft(f, a + 2)
+    return frft(f, -a)
 
 
 def sincinterp(x):
